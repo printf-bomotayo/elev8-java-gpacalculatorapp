@@ -48,22 +48,22 @@ public class GradingLogic {
         
         int course_grade_unit = 1;
         
-        if(course_grade == 'A') {
+        if(course_grade.equals('A')) {
             course_grade_unit = 5;
         }
-        else if (course_grade == 'B') {
+        else if (course_grade.equals('B')) {
             course_grade_unit = 4;
         }
-        else if (course_grade == 'C') {
+        else if (course_grade.equals('C')) {
             course_grade_unit = 3;
         }
-        else if (course_grade == 'D') {
+        else if (course_grade.equals('D')) {
             course_grade_unit = 2;
         }
-        else if (course_grade == 'E') {
+        else if (course_grade.equals('E')) {
             course_grade_unit = 1;
         }
-        else if (course_grade == 'F') {
+        else if (course_grade.equals('F')) {
             course_grade_unit = 0;
         }
         
@@ -107,26 +107,26 @@ public class GradingLogic {
                     System.out.println("Invalid input. Please enter a valid course unit between 1-10.");
                 }
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.println("Invalid input. Please enter a valid integer btw 1-10.");
                 prompt.next(); // Consume the invalid input
             }
         } while (!isValidUnit);  
         
         // Validate score input provided by user
         int course_score = 101;
-        boolean isValidScore = true;
+        boolean isValidScore = false;
         do {
             try {
-                System.out.println("Please enter a valid course unit between 1-10: ");
-                course_unit = prompt.nextInt();
+                System.out.println("Please enter a valid course score between 1-100: ");
+                course_score = prompt.nextInt();
 
-                if (course_unit >= 1 && course_unit <= 10) {
+                if (course_score >= 1 && course_score <= 100) {
                     isValidScore = true;
                 } else {
-                    System.out.println("Invalid input. Please enter a valid course unit between 1-10.");
+                    System.out.println("Invalid input. Please enter a valid course score between 1-100.");
                 }
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.println("Invalid input. Please enter a valid integer btw 1-100.");
                 prompt.next(); // Consume the invalid input
             }
         } while (!isValidScore);  
@@ -144,24 +144,24 @@ public class GradingLogic {
         double Gpa;
         
         ArrayList<Integer> quality_points = new ArrayList<>();
-        ArrayList<Integer> grade_units = new ArrayList<>();
+        ArrayList<Integer> course_units = new ArrayList<>();
         
         for(CourseModel course: AllCourses){
             quality_points.add(course.CourseUnit * course.GradeUnit);
-            grade_units.add(course.GradeUnit);
+            course_units.add(course.CourseUnit);
         }
         
         double total_quality_points = addArrayItems(quality_points);
-        double total_grade_units = addArrayItems(grade_units);
+        double total_course_units = addArrayItems(course_units);
         
-        Gpa = total_quality_points / total_grade_units;
+        Gpa = total_quality_points / total_course_units;
         
         return Gpa;
     }
     
     // Method to sum all items in an ArrayList of integers
-    private static int addArrayItems(ArrayList<Integer> list) {
-        int sum = 0;
+    private static double addArrayItems(ArrayList<Integer> list) {
+        double sum = 0;
 
         // Iterate through the elements and accumulate the sum
         for (int number : list) {
