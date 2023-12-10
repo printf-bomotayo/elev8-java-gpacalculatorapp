@@ -1,4 +1,4 @@
-## elev8-java-gpacalculatorapp
+## elev8-java-gpacalculatorapp-Cohort3
 This repository contains the project files for the assignment to build a GPA calculator using Java.  
 
 The project has a total of four java files split equally into two folders, main project folder and Models folder.  
