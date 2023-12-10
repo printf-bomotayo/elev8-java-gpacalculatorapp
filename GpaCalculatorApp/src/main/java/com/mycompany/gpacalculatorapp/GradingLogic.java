@@ -151,8 +151,8 @@ public class GradingLogic {
             grade_units.add(course.GradeUnit);
         }
         
-        int total_quality_points = sumArrayList(quality_points);
-        int total_grade_units = sumArrayList(grade_units);
+        double total_quality_points = addArrayItems(quality_points);
+        double total_grade_units = addArrayItems(grade_units);
         
         Gpa = total_quality_points / total_grade_units;
         
@@ -160,7 +160,7 @@ public class GradingLogic {
     }
     
     // Method to sum all items in an ArrayList of integers
-    private static int sumArrayList(ArrayList<Integer> list) {
+    private static int addArrayItems(ArrayList<Integer> list) {
         int sum = 0;
 
         // Iterate through the elements and accumulate the sum
